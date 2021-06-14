@@ -1,2 +1,6 @@
 {
+    "policies_sms.SMSLanguage.none": "Language of SMS",
+    "policies_sms.SMSLanguage.label": "Language of SMS",
+    "policies_sms.languageOfSMS.null": "Language of SMS",
+    "policies_sms.smsApproval": "Approve SMS"
 }
