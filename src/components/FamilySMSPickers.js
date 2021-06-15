@@ -26,10 +26,15 @@ class FamilySMSPickers extends Component {
 
     componentDidMount() {
         const { edited, fetchingFamilySms, familySms } = this.props
+        console.log(edited, familySms)
         if (!!edited && edited.uuid && !familySms) {
             this.props.fetchFamilySms(this.props.modulesManager, edited.uuid)
         } else {
-            this.setState(this.state)
+            if (!!familySms) {
+                this.setState({approvalOfSMS: familySms.approvalOfSms, languageOfSMS: familySms.languageOfSms})
+            } else{
+                this.setState(this.state)
+            }
         }
     }
 
