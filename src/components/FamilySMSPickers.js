@@ -72,14 +72,14 @@ class FamilySMSPickers extends Component {
         } else {
             if (prevState.approvalOfSMS != this.state.approvalOfSMS 
                 || prevState.languageOfSMS != this.state.languageOfSMS) {
-                updateAttribute('policiesSMS', this.state)
+                updateAttribute('PolicyNotification', this.state)
             }
         }
     }
 
     selectedLanguage = () => {
-        if (!!formContribution && !!formContribution['policiesSms']) {
-            return formContribution['policiesSms']['languageOfSMS'];
+        if (!!formContribution && !!formContribution['PolicyNotification']) {
+            return formContribution['PolicyNotification']['languageOfSMS'];
         } else {
             return null;
         }
@@ -97,7 +97,7 @@ class FamilySMSPickers extends Component {
                             disabled={readOnly}
                             onChange={e => this.onCheckedChange()}
                         />}
-                    label={formatMessage(intl, "policies_sms", "smsApproval")}
+                    label={formatMessage(intl, "policy_notification", "smsApproval")}
                 />
                 </Grid>
                 <Grid item xs={2} className={classes.item}>
@@ -110,7 +110,7 @@ class FamilySMSPickers extends Component {
                     nullLabel={"SMS Language"}
                     onChange={v => this.onLanguageChange(v)}
                     withPlaceholder={false}
-                    label={formatMessage(intl, "policies_sms", "SMSLanguage.none")}
+                    label={formatMessage(intl, "policy_notification", "SMSLanguage.none")}
                 />
                 </Grid>
                 </Grid>
@@ -120,11 +120,11 @@ class FamilySMSPickers extends Component {
 
 const mapStateToProps = (state, props) => ({
     rights: !!state.core && !!state.core.user && !!state.core.user.i_user ? state.core.user.i_user.rights : [],
-    fetchingFamilySms: state.policiesSMS.fetchingFamilySms,
-    fetchedFamilySms: state.policiesSMS.fetchedFamilySms,
-    familySms: state.policiesSMS.familySms,
-    errorFamily: state.policiesSMS.errorFamily,
-    mutation: state.policiesSMS.mutation,
+    fetchingFamilySms: state.PolicyNotification.fetchingFamilySms,
+    fetchedFamilySms: state.PolicyNotification.fetchedFamilySms,
+    familySms: state.PolicyNotification.familySms,
+    errorFamily: state.PolicyNotification.errorFamily,
+    mutation: state.PolicyNotification.mutation,
 })
 
 export default withModulesManager(withHistory(injectIntl(withTheme(

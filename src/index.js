@@ -4,10 +4,10 @@ import reducer from "./reducer";
 
 const DEFAULT_CONFIG = {
   "translations": [{ key: "en", messages: messages_en }],
-  "reducers": [{ key: 'policiesSMS', reducer }],
+  "reducers": [{ key: 'PolicyNotification', reducer }],
   "insuree.Family.master": [FamilySMSPickers],
 }
 
-export const PoliciesSMS = (cfg) => {
+export const PolicyNotification = (cfg) => {
   return { ...DEFAULT_CONFIG, ...cfg };
 }
