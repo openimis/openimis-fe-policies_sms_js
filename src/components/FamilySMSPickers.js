@@ -103,7 +103,7 @@ class FamilySMSPickers extends Component {
                 <Grid item xs={2} className={classes.item}>
                 <PublishedComponent 
                     pubRef="core.LanguagePicker"
-                    module="policy_sms"
+                    module="policy_notification"
                     value={this.getLanguageCode()}
                     readOnly={readOnly}
                     withNull={true}
