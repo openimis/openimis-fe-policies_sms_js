@@ -3,19 +3,19 @@ import {
     formatJsonField, decodeId, formatMutation, formatGQLString
   } from "@openimis/fe-core";
 
-const FAMILY_SMS_FULL_PROJECTION = mm => [
-    "approvalOfSms", "languageOfSms"
+const FAMILY_NOTIFICATION_FULL_PROJECTION = mm => [
+    "approvalOfNotification", "languageOfNotification"
   ];
 
-export function fetchFamilySms(mm, familyUuid) {
+export function fetchFamilyNotification(mm, familyUuid) {
     let filters = []
     if (!!familyUuid) {
       filters.push(`family_Uuid: "${familyUuid}"`)
     } else {
     }
-    const payload = formatPageQuery("familySms",
+    const payload = formatPageQuery("familyNotification",
       filters,
-      FAMILY_SMS_FULL_PROJECTION(mm)
+      FAMILY_NOTIFICATION_FULL_PROJECTION(mm)
     );
-    return graphql(payload, 'FAMILY_SMS');
+    return graphql(payload, 'FAMILY_NOTIFICATION');
   }

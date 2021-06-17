@@ -1,6 +1,6 @@
 {
-    "policy_notification.SMSLanguage.none": "Language of SMS",
-    "policy_notification.SMSLanguage.label": "Language of SMS",
-    "policy_notification.languageOfSMS.null": "Language of SMS",
-    "policy_notification.smsApproval": "Approve SMS"
+    "policy_notification.NotificationLanguage.none": "Language of notification",
+    "policy_notification.NotificationLanguage.label": "Language of notification",
+    "policy_notification.languageOfNotification.null": "Language of notification",
+    "policy_notification.notificationApproval": "Approve notification"
 }

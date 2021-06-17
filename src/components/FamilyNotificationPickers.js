@@ -8,7 +8,7 @@ import {
     historyPush, withHistory, withModulesManager, journalize,
     TextInput, formatMessage, PublishedComponent, FormattedMessage, FormPanel, LanguagePicker
 } from "@openimis/fe-core";
-import { fetchFamilySms } from "../actions";
+import { fetchFamilyNotification } from "../actions";
 
 const styles = theme => ({
     tableTitle: theme.table.title,
@@ -18,20 +18,20 @@ const styles = theme => ({
     },
 });
 
-class FamilySMSPickers extends Component {
+class FamilyNotificationPickers extends Component {
     state = {
-        approvalOfSMS: false,
-        languageOfSMS: null
+        approvalOfNotification: false,
+        languageOfNotification: null
     }
 
     componentDidMount() {
-        const { edited, fetchingFamilySms, familySms } = this.props
-        console.log(edited, familySms)
-        if (!!edited && edited.uuid && !familySms) {
-            this.props.fetchFamilySms(this.props.modulesManager, edited.uuid)
+        const { edited, fetchingfamilyNotification, familyNotification } = this.props
+        console.log(edited, familyNotification)
+        if (!!edited && edited.uuid && !familyNotification) {
+            this.props.fetchFamilyNotification(this.props.modulesManager, edited.uuid)
         } else {
-            if (!!familySms) {
-                this.setState({approvalOfSMS: familySms.approvalOfSms, languageOfSMS: familySms.languageOfSms})
+            if (!!familyNotification) {
+                this.setState({approvalOfNotification: familyNotification.approvalOfNotification, languageOfNotification: familyNotification.languageOfNotification})
             } else{
                 this.setState(this.state)
             }
@@ -40,38 +40,38 @@ class FamilySMSPickers extends Component {
 
     onCheckedChange = () => {
         this.setState({ 
-            approvalOfSMS: !this.state.approvalOfSMS,
-            languageOfSMS: this.state.languageOfSMS
+            approvalOfNotification: !this.state.approvalOfNotification,
+            languageOfNotification: this.state.languageOfNotification
         });
     } 
 
     onLanguageChange = (v) => {
 
         this.setState({ 
-            approvalOfSMS: this.state.approvalOfSMS,
-            languageOfSMS: v
+            approvalOfNotification: this.state.approvalOfNotification,
+            languageOfNotification: v
         });
     } 
 
     isChecked = () => {
-        return this.state.approvalOfSMS;
+        return this.state.approvalOfNotification;
     }
 
     getLanguageCode = () => {
         
-        return this.state.languageOfSMS;
+        return this.state.languageOfNotification;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { updateAttribute, fetchedFamilySms, familySms } = this.props
-        if (prevProps.fetchedFamilySms != fetchedFamilySms && familySms) {
+        const { updateAttribute, fetchedfamilyNotification, familyNotification } = this.props
+        if (prevProps.fetchedfamilyNotification != fetchedfamilyNotification && familyNotification) {
             this.setState({
-                approvalOfSMS: familySms.approvalOfSms,
-                languageOfSMS: familySms.languageOfSms
+                approvalOfNotification: familyNotification.approvalOfNotification,
+                languageOfNotification: familyNotification.languageOfNotification
             })
         } else {
-            if (prevState.approvalOfSMS != this.state.approvalOfSMS 
-                || prevState.languageOfSMS != this.state.languageOfSMS) {
+            if (prevState.approvalOfNotification != this.state.approvalOfNotification 
+                || prevState.languageOfNotification != this.state.languageOfNotification) {
                 updateAttribute('PolicyNotification', this.state)
             }
         }
@@ -79,14 +79,14 @@ class FamilySMSPickers extends Component {
 
     selectedLanguage = () => {
         if (!!formContribution && !!formContribution['PolicyNotification']) {
-            return formContribution['PolicyNotification']['languageOfSMS'];
+            return formContribution['PolicyNotification']['languageOfNotification'];
         } else {
             return null;
         }
     }
     
     render () {
-        const { intl,  classes, readOnly, updateAttribute, formData, edited, familySms } = this.props;
+        const { intl,  classes, readOnly, updateAttribute, formData, edited, familyNotification } = this.props;
         return (<Grid container className={classes.item}>
                 <Grid item xs={2} className={classes.item}>
                 <FormControlLabel
@@ -97,7 +97,7 @@ class FamilySMSPickers extends Component {
                             disabled={readOnly}
                             onChange={e => this.onCheckedChange()}
                         />}
-                    label={formatMessage(intl, "policy_notification", "smsApproval")}
+                    label={formatMessage(intl, "policy_notification", "notificationApproval")}
                 />
                 </Grid>
                 <Grid item xs={2} className={classes.item}>
@@ -110,7 +110,7 @@ class FamilySMSPickers extends Component {
                     nullLabel={"SMS Language"}
                     onChange={v => this.onLanguageChange(v)}
                     withPlaceholder={false}
-                    label={formatMessage(intl, "policy_notification", "SMSLanguage.none")}
+                    label={formatMessage(intl, "policy_notification", "NotificationLanguage.none")}
                 />
                 </Grid>
                 </Grid>
@@ -120,14 +120,14 @@ class FamilySMSPickers extends Component {
 
 const mapStateToProps = (state, props) => ({
     rights: !!state.core && !!state.core.user && !!state.core.user.i_user ? state.core.user.i_user.rights : [],
-    fetchingFamilySms: state.PolicyNotification.fetchingFamilySms,
-    fetchedFamilySms: state.PolicyNotification.fetchedFamilySms,
-    familySms: state.PolicyNotification.familySms,
+    fetchingfamilyNotification: state.PolicyNotification.fetchingfamilyNotification,
+    fetchedfamilyNotification: state.PolicyNotification.fetchedfamilyNotification,
+    familyNotification: state.PolicyNotification.familyNotification,
     errorFamily: state.PolicyNotification.errorFamily,
     mutation: state.PolicyNotification.mutation,
 })
 
 export default withModulesManager(withHistory(injectIntl(withTheme(
-        connect(mapStateToProps, { fetchFamilySms, journalize })(
-        withStyles(styles)(FamilySMSPickers)
+        connect(mapStateToProps, { fetchFamilyNotification, journalize })(
+        withStyles(styles)(FamilyNotificationPickers)
 )))));
