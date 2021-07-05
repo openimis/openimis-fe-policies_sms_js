@@ -34,7 +34,7 @@ const styles = theme => ({
 })
 
 
-class FamilyNotificationReport2 extends Component {
+class FamilyNotificationReport extends Component {
     state = {
         hidden: false,
         toolTipOpen: false,
@@ -93,24 +93,6 @@ class FamilyNotificationReport2 extends Component {
         this.setState({modalOpen : false })
     }
 
-    renderInfoModal = () => {
-        const { intl, classes } = this.props;
-        return (
-            <Modal
-            open={this.state.modalOpen}
-            onClose={this.handleCloseModal}
-            >
-                <div style={{
-                transform: 'translate(-80%, -0%)',
-                top: !!this.state.menuItemRef ? this.state.menuItemRef.offsetTop : 0,
-                left: !!this.state.menuItemRef ? this.state.menuItemRef.offsetLeft : 0,
-                }} className={classes.paperDiv}>
-                    {formatMessage(intl, "policy_notification", "deeperLocationLevelOmitted")}
-                </div>
-            </Modal>
-        )
-    }
-    
     setMenuItemRef = element => {    
         this.setState({menuItemRef: element}); 
     };
@@ -149,7 +131,6 @@ class FamilyNotificationReport2 extends Component {
                     </Tooltip>
                 }
                 {!!generating && <CircularProgress className={classes.generating} size={24} />}
-                {this.renderInfoModal()}
                 </div>
                 </div>
             )
@@ -173,4 +154,4 @@ const mapDispatchToProps = dispatch => {
         dispatch);
 };
 
-export default injectIntl(withTheme(withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(FamilyNotificationReport2))));
+export default injectIntl(withTheme(withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(FamilyNotificationReport))));
