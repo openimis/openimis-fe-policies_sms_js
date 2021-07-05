@@ -2,5 +2,16 @@
     "policy_notification.NotificationLanguage.none": "Language of notification",
     "policy_notification.NotificationLanguage.label": "Language of notification",
     "policy_notification.languageOfNotification.null": "Language of notification",
-    "policy_notification.notificationApproval": "Approve notification"
+    "policy_notification.notificationApproval": "Approve notification",
+    "policy_notification.ModePicker.placehoder": "Notification enabled",
+    "policy_notification.ModePicker.label": "Notification enabled",
+    "policy_notification.Mode.null": "All",
+    "policy_notification.Mode.0": "All",
+    "policy_notification.Mode.1": "Approval and phone number",
+    "policy_notification.Mode.2": "Approval only",
+    "policy_notification.Mode.3": "Phone number only",
+    "policy_notification.Mode.4": "No approval and phone number",
+    "policy_notification.ReportModal": "Family Policies Notification Report",
+    "policy_notification.disabledReportNoRegion": "Filtering by location at least at Region level required.",
+    "policy_notification.deeperLocationLevelOmitted": "Only two first location levels (Region and District) used for report."
 }

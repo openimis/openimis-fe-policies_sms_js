@@ -9,6 +9,8 @@ function reducer(
         fetchedfamilyNotification: false,
         familyNotification: null,
         errorFamily: null,
+        modes: [null, 1, 2, 3, 4],
+        generatingFamilyNotificationReport: false,
         mutation: {},
     },
     action,
@@ -36,6 +38,16 @@ function reducer(
                 ...state,
                 fetchingfamilyNotification: false,
                 errorfamilyNotification: formatServerError(action.payload)
+            };
+        case 'FAMILY_NOTIFICATION_REPORT_PREVIEW':
+            return {
+                ...state,
+                generatingFamilyNotificationReport: true,
+            };
+        case 'FAMILY_NOTIFICATION_REPORT_DONE':
+            return {
+                ...state,
+                generatingFamilyNotificationReport: false
             };
         default:
             return state;
