@@ -12,6 +12,5 @@
     "policy_notification.Mode.3": "Phone number only",
     "policy_notification.Mode.4": "No approval and phone number",
     "policy_notification.ReportModal": "Family Policies Notification Report",
-    "policy_notification.disabledReportNoRegion": "Filtering by location at least at Region level required.",
-    "policy_notification.deeperLocationLevelOmitted": "Only two first location levels (Region and District) used for report."
+    "policy_notification.disabledReportNoRegion": "Filtering by location at least at Region level required."
 }
